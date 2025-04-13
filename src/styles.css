@@ -1,0 +1,27 @@
+:root {
+    --azul900: hsl(227, 75%, 14%);
+    --azul800: hsl(226, 25%, 17%);
+    --azul700: hsl(225, 23%, 24%);
+    --gradienteOscuro: linear-gradient(180deg, #040918 0%, #091540 100%);
+    --gradienteClaro: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--gradienteOscuro);
+    background-repeat: none;
+    height: 100vh;
+    font-size: 16px;
+    margin-inline: 4rem;
+}
+
+header {
+    margin-top: 2rem;
+    background-color: var(--azul800);
+    border-radius: 1rem;
+    padding: 1rem;
+}
