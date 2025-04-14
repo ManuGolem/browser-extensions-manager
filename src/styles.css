@@ -2,6 +2,14 @@
     --azul900: hsl(227, 75%, 14%);
     --azul800: hsl(226, 25%, 17%);
     --azul700: hsl(225, 23%, 24%);
+    --azul600: hsl(226, 11%, 37%);
+    --gris300: hsl(0, 0%, 78%);
+    --gris200: hsl(217, 61%, 90%);
+    --gris100: hsl(0, 0%, 93%);
+    --gris000: hsl(200, 60%, 99%);
+    --rojo700: hsl(3, 77%, 44%);
+    --rojo500: hsl(3, 71%, 56%);
+    --rojo400: hsl(3, 86%, 64%);
     --gradienteOscuro: linear-gradient(180deg, #040918 0%, #091540 100%);
     --gradienteClaro: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
 }
@@ -24,4 +32,19 @@ header {
     background-color: var(--azul800);
     border-radius: 1rem;
     padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .sun {
+        padding: 1rem;
+        background-color: var(--azul700);
+        border-radius: 1rem;
+        border: 2px solid transparent;
+
+        &:hover {
+            border-color: var(--rojo400);
+            cursor: pointer;
+        }
+    }
 }
