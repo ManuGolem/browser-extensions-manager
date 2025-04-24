@@ -11,10 +11,33 @@ function init(data) {
     //Agregar Eventos a los botones
     botonesFiltros.forEach((boton) => {
         boton.addEventListener("click", () => {
+            botonesFiltros.forEach((b) => b.classList.remove("activo"));
             boton.classList.toggle("activo");
-            console.log(data);
+            const dataCopia = filtrar(data, boton.id);
+            mostrarData(dataCopia);
         });
     });
+    mostrarData(data);
+}
+function filtrar(data, id) {
+    let dataReturn = [];
+    if (id === "active") {
+        data.forEach((extension) => {
+            extension.isActive && dataReturn.push(extension);
+        });
+    } else if (id === "inactive") {
+        data.forEach((extension) => {
+            !extension.isActive && dataReturn.push(extension);
+        });
+    } else {
+        dataReturn = data;
+    }
+    return dataReturn;
+}
+function mostrarData(data) {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
     data.forEach((extension) => {
         const card = document.createElement("div");
         card.classList.add("card");
@@ -37,7 +60,7 @@ function init(data) {
         remove.textContent = "Remove";
         const toggleActive = document.createElement("label");
         toggleActive.innerHTML = `
-            <input id=${extension.name} type="checkbox" ${extension.isActive && "checked"}>
+            <input id=${extension.logo} type="checkbox" ${extension.isActive && "checked"}>
             <div class="toggle-switch-background" >
                 <div class="toggle-switch-handle"></div>
             </div>
@@ -45,7 +68,7 @@ function init(data) {
         toggleActive.classList.add("toggle-switch");
         toggleActive.addEventListener("change", (e) => {
             data.filter((extension) => {
-                if (extension.name == e.target.id) {
+                if (extension.logo == e.target.id) {
                     extension.isActive = !extension.isActive;
                 }
             });
