@@ -1,5 +1,7 @@
 const botonesFiltros = document.querySelectorAll("li");
 const container = document.querySelector(".container");
+let datos;
+let idActivo;
 document.addEventListener("DOMContentLoaded", () => {
     //Traer los datos del .json
     fetch("../data.json")
@@ -8,16 +10,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function init(data) {
+    datos = data;
     //Agregar Eventos a los botones
     botonesFiltros.forEach((boton) => {
         boton.addEventListener("click", () => {
             botonesFiltros.forEach((b) => b.classList.remove("activo"));
             boton.classList.toggle("activo");
-            const dataCopia = filtrar(data, boton.id);
+            const dataCopia = filtrar(datos, boton.id);
             mostrarData(dataCopia);
         });
     });
-    mostrarData(data);
+    mostrarData(datos);
 }
 function filtrar(data, id) {
     let dataReturn = [];
@@ -32,6 +35,7 @@ function filtrar(data, id) {
     } else {
         dataReturn = data;
     }
+    idActivo = id;
     return dataReturn;
 }
 function mostrarData(data) {
@@ -54,10 +58,15 @@ function mostrarData(data) {
         divIntermedio.appendChild(titulo);
         divIntermedio.appendChild(descripcion);
         containerDiv.appendChild(divIntermedio);
-        //Aca falta agregar los dos botones
         card.appendChild(containerDiv);
         const remove = document.createElement("button");
+        remove.id = extension.logo;
         remove.textContent = "Remove";
+        remove.classList.add("remove");
+        remove.addEventListener("click", (e) => {
+            datos = data.filter((extension) => extension.logo !== e.target.id);
+            mostrarData(datos);
+        });
         const toggleActive = document.createElement("label");
         toggleActive.innerHTML = `
             <input id=${extension.logo} type="checkbox" ${extension.isActive && "checked"}>
@@ -67,11 +76,12 @@ function mostrarData(data) {
             `;
         toggleActive.classList.add("toggle-switch");
         toggleActive.addEventListener("change", (e) => {
-            data.filter((extension) => {
+            datos.forEach((extension) => {
                 if (extension.logo == e.target.id) {
                     extension.isActive = !extension.isActive;
                 }
             });
+            mostrarData(filtrar(datos, idActivo));
         });
         const botones = document.createElement("div");
         botones.appendChild(remove);
