@@ -58,6 +58,20 @@ header {
             cursor: pointer;
         }
     }
+
+    .moon {
+        display: none;
+        padding: 1rem;
+        background-color: var(--azul700);
+        border-radius: 1rem;
+        border: 2px solid transparent;
+
+        &:hover {
+            border-color: var(--rojo400);
+            background-color: var(--azul600);
+            cursor: pointer;
+        }
+    }
 }
 
 main {
@@ -119,6 +133,8 @@ footer {
 
 .activo {
     background-color: var(--rojo400);
+    color: var(--azul900);
+    font-weight: bold;
 }
 
 .container {

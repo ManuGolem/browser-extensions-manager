@@ -1,9 +1,11 @@
 const botonesFiltros = document.querySelectorAll("li");
 const container = document.querySelector(".container");
+const sun = document.querySelector(".sun");
+const moon = document.querySelector(".moon");
 let datos;
 let idActivo;
+let darkMode = true;
 document.addEventListener("DOMContentLoaded", () => {
-    //Traer los datos del .json
     fetch("../data.json")
         .then((response) => response.json())
         .then((data) => init(data));
@@ -11,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function init(data) {
     datos = data;
-    //Agregar Eventos a los botones
     botonesFiltros.forEach((boton) => {
         boton.addEventListener("click", () => {
             botonesFiltros.forEach((b) => b.classList.remove("activo"));
@@ -19,6 +20,16 @@ function init(data) {
             const dataCopia = filtrar(datos, boton.id);
             mostrarData(dataCopia);
         });
+    });
+    sun.addEventListener("click", () => {
+        cambiarModo();
+        moon.style.display = "block";
+        sun.style.display = "none";
+    });
+    moon.addEventListener("click", () => {
+        cambiarModo();
+        sun.style.display = "block";
+        moon.style.display = "none";
     });
     mostrarData(datos);
 }
@@ -65,6 +76,7 @@ function mostrarData(data) {
         remove.classList.add("remove");
         remove.addEventListener("click", (e) => {
             datos = data.filter((extension) => extension.logo !== e.target.id);
+            //Esto es para actualizar la vista porque se queda renderizando lo viejo
             mostrarData(datos);
         });
         const toggleActive = document.createElement("label");
@@ -81,6 +93,7 @@ function mostrarData(data) {
                     extension.isActive = !extension.isActive;
                 }
             });
+            //Esto es para actualizar la vista porque se queda renderizando lo viejo
             mostrarData(filtrar(datos, idActivo));
         });
         const botones = document.createElement("div");
@@ -90,4 +103,8 @@ function mostrarData(data) {
         card.appendChild(botones);
         container.appendChild(card);
     });
+}
+function cambiarModo() {
+    darkMode = !darkMode;
+    console.log(darkMode ? "Dark" : "Light");
 }
