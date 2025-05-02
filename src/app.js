@@ -2,6 +2,7 @@ const botonesFiltros = document.querySelectorAll("li");
 const container = document.querySelector(".container");
 const sun = document.querySelector(".sun");
 const moon = document.querySelector(".moon");
+const body = document.querySelector("body");
 let datos;
 let idActivo;
 let darkMode = true;
@@ -106,5 +107,5 @@ function mostrarData(data) {
 }
 function cambiarModo() {
     darkMode = !darkMode;
-    console.log(darkMode ? "Dark" : "Light");
+    body.classList.toggle("light");
 }

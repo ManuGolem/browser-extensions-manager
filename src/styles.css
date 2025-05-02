@@ -244,3 +244,18 @@ footer {
         font-weight: 700;
     }
 }
+
+.light {
+    background: var(--gradienteClaro);
+    background-repeat: no-repeat;
+
+    header {
+        background-color: var(--gris000);
+        color: var(--azul900);
+        box-shadow: 2px 2px 2px var(--gris300);
+
+        svg path[fill="white"] {
+            fill: var(--azul900);
+        }
+    }
+}
