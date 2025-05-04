@@ -257,5 +257,53 @@ footer {
         svg path[fill="white"] {
             fill: var(--azul900);
         }
+
+        .moon {
+            background-color: var(--gris100);
+        }
+    }
+
+    .subheader {
+        h1 {
+            color: var(--azul900);
+        }
+
+        li {
+            color: black;
+            background-color: var(--gris000);
+
+            &:hover {
+                border-color: var(--rojo400);
+                background-color: var(--gris100);
+                cursor: pointer;
+            }
+        }
+
+        .activo {
+            background-color: var(--rojo400);
+            color: var(--azul900);
+            font-weight: bold;
+        }
+    }
+
+    .card {
+        background-color: var(--gris000);
+        border: 2px solid var(--gris100);
+
+        h1 {
+            color: var(--azul900);
+        }
+
+        p {
+            color: var(--azul600);
+        }
+
+        button {
+            color: black;
+
+            &:hover {
+                background-color: var(--gris100);
+            }
+        }
     }
 }
