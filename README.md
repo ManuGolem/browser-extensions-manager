@@ -29,15 +29,15 @@ Users should be able to:
 
 #### Desktop
 
-![Desktop](./screenshot.jpg)
+![Desktop](./assets/Desktop.png)
 
 #### Mobile:
 
-![Mobile](./screenshot.jpg)
+![Mobile](./assets/Mobile.png)
 
 ### Links
 
-- Live Site URL: [Live Demo](https://your-solution-url.com)
+- Live Site URL: [Live Demo](https://manugolem.github.io/browser-extensions-manager/)
 
 ## My process
 
